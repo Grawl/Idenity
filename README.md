@@ -92,7 +92,7 @@ Other tasks is private because of they purpose is to debug and develop System. Y
 - `deploy` task to publish and deliver files to remote server
 	- [`vinyl-ftp`](https://github.com/morris/vinyl-ftp) to deploy to FTP
 	- [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages) to deploy to Github Pages
-	- Make a choice in Yeoman generator which of these to use?
+	- Make a choice in Yeoman generator which of these to use
 - [Yeoman](http://yeoman.io/) support to deliver System with handy generator that will ask you for new project name, port to launch local server and maybe some other things to customize
 	
 	Example CLI:
@@ -106,6 +106,8 @@ Other tasks is private because of they purpose is to debug and develop System. Y
 	- Customize some more fields from `path.json` maybe
 	
 - Better JS build flow? *[Babel](http://babeljs.io)? [Webpack](http://webpack.github.io)? I don't use JS too much to know.* 
+- Example of use on a different branch
+	- deploy it to Github Pages with [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages)
 
 ## For newbies in all these NPM-ish things
 
