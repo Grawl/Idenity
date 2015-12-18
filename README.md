@@ -1,8 +1,10 @@
-# Idenity
+# Identity
 
 Static website compiler on NPM, Bower & Gulp.
 
 I'm a year long on Gulp after a year on Grunt and always thinking with [DRY](http://www.wikiwand.com/en/Don't_repeat_yourself) and have a lot of ideas to share one build system core from one project to another. But I don't like any of build systems that already created by other developers because they don't love my stack. And here it is, finally. *Hope I will update and upgrade it with time.*
+
+*Named in the glory of a song Cypecore – Identity. Love it.*
 
 ## Technologies using
 
