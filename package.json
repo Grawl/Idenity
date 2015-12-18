@@ -1,9 +1,9 @@
 {
-  "name": "identity",
+  "name": "Identity",
   "version": "0.1.0",
   "description": "Static website compiler on NPM, Bower & Gulp",
   "main": "gulpfile.js",
-  "repository": "https://github.com/Grawl/idenity.git",
+  "repository": "https://github.com/Grawl/identity.git",
   "keywords": [
     "static",
     "frontend"
