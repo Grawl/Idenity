@@ -76,7 +76,7 @@ Other tasks is private because of they purpose is to debug and develop System. Y
 	
 	For example, you can add [Zurb Foundation](http://foundation.zurb.com) with Terminal: `bower install --save foundation-sites`. All done, System will download it, inject into Jade and Sass all shipped dependencies and refresh the page in a browser.
 	
-	**Hint:** you can instal not only browser-land packages, but also Jade or Sass libraries like [Susy](`http://susy.oddbird.net`) or [`jade-field-mixins`](). They will be injected into right places with right order based on dependencies tree.
+	**Hint:** you can install not only browser-land packages, but also Jade or Sass libraries like [Susy](http://susy.oddbird.net) or [`jade-field-mixins`](https://github.com/jossmac/jade-field-mixins). They will be injected into right places with right order based on dependencies tree.
 	
 	If your installed dependency have wrong `main` section, you can fix it by yourself by adding `overrides` to your package `bower.json`:
 	
