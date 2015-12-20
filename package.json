@@ -6,7 +6,15 @@
   "repository": "https://github.com/Grawl/identity.git",
   "keywords": [
     "static",
-    "frontend"
+    "frontend",
+    "npm",
+    "bower",
+    "gulp",
+    "sass",
+    "postcss",
+    "jade",
+    "wiredep",
+    "browsersync"
   ],
   "author": "Даниил Пронин",
   "license": "WTFPL",

@@ -4,11 +4,15 @@ Static website compiler on NPM, Bower & Gulp.
 
 I'm a year long on Gulp after a year on Grunt and always thinking with [DRY](http://www.wikiwand.com/en/Don't_repeat_yourself) and have a lot of ideas to share one build system core from one project to another. But I don't like any of build systems that already created by other developers because they don't love my stack. And here it is, finally. *Hope I will update and upgrade it with time.*
 
-*Named in the glory of a song Cypecore – Identity. Love it.*
+*Named in the glory of a song [Cypecore – Identity](https://youtu.be/_AzMxjumRys). Love it.*
 
-## Technologies using
+## TL;DR
 
-### TL;DR
+This is a ready to use and upgrade static website build system to create static website using modern technologies. But I don't implement any JS framework because **it's not about Single Page Applications**.
+
+You're will be happy with Identity if you are looking for a simple prototyping tool to create a static prototype without any routing or so. Just static. That's it.
+
+There are lot of implement just for that purpose.
 
 Already implemented:
 - [NPM](http://npmjs.org), [Bower](http://bower.io), [Gulp](http://gulpjs.com/)
@@ -19,6 +23,8 @@ Already implemented:
 Want to use:
 - [Yeoman](http://yeoman.io/)
 - [xip.io](http://xip.io) through [BrowserSync option](https://www.browsersync.io/docs/options/#option-xip) (maybe with additional task?)
+
+## Technologies using
 
 ### Build
 
@@ -43,7 +49,7 @@ Want to use:
 
 #### Public tasks
 
-Gulp tasks that makes all works for you.
+Gulp tasks that makes all routine for you.
 
 - `_live` (used as `default` so you can just run `$ gulp` and work)
 	- assemble project to fresh state
@@ -68,29 +74,58 @@ Other tasks is private because of they purpose is to debug and develop System. Y
 	
 	```json
 	{
-	  …
-	  "dependencies": {
-	    …
-	    "package-with-wrong-main-section": "*"
-	  },
-	  "overrides": {
-	    "package-with-wrong-main-section": {
-	      "main": [
-	        "files/*"
-	      ]
-	    }
-	  }
+		…
+		"dependencies": {
+			…
+			"package-to-override": "*"
+		},
+		"overrides": {
+			"package-to-override": {
+				"main": [
+					"files/*"
+				],
+				"ignore": true/false,
+				"dependencies": [
+					"other-package"
+				]
+			}
+		}
 	}
 	```
+	
+	You can redefine any Bower component fields. For example:
+		
+	- Use Sass instead of CSS in [Fotorama](https://github.com/artpolikarpov/fotorama/)
+	- Replace [regular Modernizr](https://modernizr.com/) with [`modernizr-min`](https://github.com/chatii2412/modernizr-min) in [Zurb Foundation](https://github.com/zurb/foundation-sites):
+		- Ignore `modernizr`
+		- Override it's dependencies to Zurb Foundation to inject it in right order (after redefined dependency) and get it work in browser
+			
+			`./bower.json`
+			```json
+			…
+			"overrides": {
+				"modernizr": {
+					"ignore": true
+				},
+				"modernizr-min": {
+					"dependencies": [
+						"foundation-sites"
+					]
+				}
+			}
+			```
+	
+	See [Documentation](https://github.com/taptapship/wiredep/blob/master/readme.md#bower-overrides) on Bower overrides in Wiredep repository.
 
 - *Partials injection*. If your partials injection order is not important for you (if they are independent modules like mixins) you can use `templates`/`styles``/partials/modules/` folder inside to store them in. They will be injected into `partials/_injections``.sass`/`.jade` so you can use mixins, variables or anything defined inside your modules into other partials.
 	
-- If you want to deliver your project to a team member, you can use `publish` task to compile project and pack it into `zip` file. You will find it in `piblic/` folder named with your project name.
+- If you want to deliver your project to a team member, you can use `publish` task to compile project and pack it into `zip` file. You will find it in `public/` folder named with your project name.
 - If you want to deploy your project to remote server, *ask me to add `deploy` task.*
 
 ## TODO
 
 - Fix source maps for stylesheets
+- Minify images going to public (not in developing time)
 - `deploy` task to publish and deliver files to remote server
 	- [`vinyl-ftp`](https://github.com/morris/vinyl-ftp) to deploy to FTP
 	- [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages) to deploy to Github Pages
