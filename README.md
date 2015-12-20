@@ -14,15 +14,23 @@ You're will be happy with Identity if you are looking for a simple prototyping t
 
 There are lot of implement just for that purpose.
 
+[<img src="http://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg" alt="Sass" height="40px">](http://sass-lang.com "Sass – CSS with superpowers")
+[<img src="http://postcss.github.io/postcss/logo.svg" alt="PostCSS" height="40px">](https://github.com/postcss/postcss "PostCSS – Transforming styles with JS plugins")
+[<img src="http://jade-lang.com/style/jade-logo-header.svg" alt="Jade" height="40px">](http://jade-lang.com "Jade – Node template engine")
+[<img src="https://browsersync.io/brand-assets/logo-red.svg" alt="Browsersync" height="40px">](https://browsersync.io "Browsersync – Time-saving synchronised browser testing")
+[<img src="https://raw.githubusercontent.com/gulpjs/artwork/master/gulp.png" alt="gulp" height="50px">](http://gulpjs.com "gulp – Automate and enhance your workflow")
+[<img src="http://bower.io/img/bower-logo.png" alt="Bower" height="40px">](http://bower.io "Bower – A package manager for the web")
+[<img src="https://www.npmjs.com/static/images/npm-logo.svg" alt="npm" height="30px">](https://www.npmjs.com "npm – package manager")
+
 Already implemented:
 - [NPM](http://npmjs.org), [Bower](http://bower.io), [Gulp](http://gulpjs.com/)
 - [Sass](http://sass-lang.com), [PostCSS](https://github.com/postcss/postcss), [Jade](http://jade-lang.com)
 - [Wiredep](https://github.com/taptapship/wiredep)
-- [BrowserSync](http://browsersync.io)
+- [Browsersync](http://browsersync.io)
 
 Want to use:
 - [Yeoman](http://yeoman.io/)
-- [xip.io](http://xip.io) through [BrowserSync option](https://www.browsersync.io/docs/options/#option-xip) (maybe with additional task?)
+- [xip.io](http://xip.io) through [Browsersync option](https://www.browsersync.io/docs/options/#option-xip) (maybe with additional task?)
 
 ## Technologies using
 
@@ -45,7 +53,7 @@ Want to use:
 - [Wiredep](https://github.com/taptapship/wiredep) for Sass and Jade to collect all your bundled dependencies from Bower **with the right order** based on dependencies tree
 - [`gulp-inject`](https://github.com/klei/gulp-inject/) injects all bundled dependencies collected by Wiredep right into Jade templates and Sass stylesheets
 - [`gulp-notify`](https://github.com/mikaelbr/gulp-notify) to let you know when you're doing something wrong
-- [BrowserSync](http://browsersync.io) to launch local server on your machine and live update the pages when you edit them
+- [Browsersync](http://browsersync.io) to launch local server on your machine and live update the pages when you edit them
 
 #### Public tasks
 
