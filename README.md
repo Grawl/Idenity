@@ -161,6 +161,10 @@ Other tasks is private because of they purpose is to debug and develop System. Y
 - Example of use on a different branch
 	- deploy it to Github Pages with [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages)
 
+- Move to [Gulp `4.0`](https://github.com/gulpjs/gulp/tree/4.0)
+	- *Rewtrite subtasks to funcitons?*
+	- Use `gulp.series` to sync tasks
+
 ## For newbies in all these NPM-ish things
 
 If you are not familiar with NPM, Node.js and other implemented base technologies, I'll try to help you with.
