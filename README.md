@@ -151,13 +151,7 @@ Other tasks is private because of they purpose is to debug and develop System. Y
 		
 	- Customize some more fields from `path.json` maybe
 	
-- Pack own JS with [`webpack`](http://webpack.github.io) using [Babel](http://babeljs.io) loader and some other pretty things.
-	
-	Don't want to pack vendor JS with [`webpack`](http://webpack.github.io)
-	
-	- [`webpack`](http://webpack.github.io) is too slow to bundle a pack of vendors on the fly
-	- it's easier to install anything with Bower and overwrite dependency `main` and dependencies
-	- and it's even better than providing absolute paths to packages without `main` section in `bower.json`
+- Pack own JS with [`gulp-include`](https://www.npmjs.com/package/gulp-include)
 
 - Example of use on a different branch
 	- deploy it to Github Pages with [`gulp-gh-pages`](https://github.com/shinnn/gulp-gh-pages)
