@@ -16,6 +16,9 @@
     "browserify",
     "browsersync"
   ],
+  "scripts": {
+    "test": "gulp :assemble"
+  },
   "browserify": {
     "transform": [
       [
