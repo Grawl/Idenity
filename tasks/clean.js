@@ -1,16 +1,22 @@
-var gulp=require('gulp');
-var del=require('del');
-var path=require('../path.json');
-var cleanTaskPrefix='clean';
-gulp.task(cleanTaskPrefix+':dist', ()=>{
-	return del(path.dist+'**/*');
-});
-gulp.task(cleanTaskPrefix+':src', ()=>{
-	return del([
-		path.src+path.srcTemplatesDir+'partials/_injections.jade',
-		path.src+path.srcStylesDir+'partials/_injections.sass'
-	])
-});
-gulp.task(cleanTaskPrefix+':tmp', ()=>{
-	return del(path.tmp);
-});
+'use strict'
+// globals
+const gulp = require('gulp')
+const del = require('del')
+const fs = require('fs')
+// locals
+const config = require('../gulp-config.js')
+const pathsToClean = pathPrefix => {
+	let list = [
+		`${pathPrefix}*.{html,php,xml,js,css,map,zip}`,
+		`${pathPrefix}vendor/`,
+		`!${pathPrefix}gulpfile.js`
+	]
+	fs.readFileSync('.gitignore', 'utf8').split('\n').forEach(line => {
+		if(/^!/.test(line)) list.push(`!./${line.slice(1)}`)
+	})
+	return list
+}
+// public tasks
+gulp.task('clean', () => {
+	return del(pathsToClean(config.serve))
+})

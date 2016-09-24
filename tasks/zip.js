@@ -1,10 +1,19 @@
-var gulp=require('gulp');
-var path=require('../path.json');
-var pkg=require('../package.json');
-var zip=require('gulp-zip');
-gulp.task('zip', (callback)=>{
-	gulp.src(path.dist + '*')
-		.pipe(zip(pkg.name + '.zip'))
-		.pipe(gulp.dest(path.dist));
-	callback();
-});
+'use strict'
+// globals
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')()
+// locals
+const config = require('../gulp-config.js')
+const pkg = require('../package.json')
+function createArchive(folder) {
+	return gulp.src([
+		`${folder}**/*.*`,
+		`!${folder}node_modules/**/*`
+	])
+		.pipe($.vinylZip.zip(`${pkg.name}.zip`))
+		.pipe(gulp.dest(`${folder}`))
+}
+// public tasks
+gulp.task(`zip`, () => {
+	return createArchive(config.serve)
+})

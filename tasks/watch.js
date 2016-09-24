@@ -1,20 +1,20 @@
-var gulp=require('gulp');
-var path=require('../path.json');
-gulp.task('watch', ()=>{
-	function watchFactory(src, tasks){
+'use strict'
+// globals
+const gulp = require('gulp')
+// locals
+const config = require('../gulp-config.js')
+// public tasks
+gulp.task('watch', () => {
+	function watch(src, tasks) {
 		return gulp.watch(src, tasks)
-			.on('change', function(event){
-				console.log('File '+event.path+' was '+event.type+', running tasks...');
-			});
+			.on('change', function(event) {
+				console.log(`File ${event.path} was ${event.type}, running tasks...`)
+			})
 	}
-	var injectionsDir='tasks/injections/';
-	watchFactory([
-		path.src+path.srcTemplatesPartials,
-		injectionsDir+'_injections.jade'
-	], ['inject:templates', 'templates']);
-	watchFactory([
-		path.src+path.srcStylesPartials,
-		injectionsDir+'_injections.sass'
-	], ['inject:styles', 'styles']);
-	watchFactory([path.src+path.srcScriptsPartials], ['scripts']);
-});
+	watch([
+		config.templatesToWatch,
+		`data.json`
+	], ['templates'])
+	watch(config.stylesToWatch, ['styles'])
+	watch(config.scriptsToWatch, ['scripts'])
+})

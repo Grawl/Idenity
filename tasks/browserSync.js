@@ -1,25 +1,18 @@
-var gulp=require('gulp');
-var browserSync=require('browser-sync');
-var path=require('../path.json');
-gulp.task('browsersync', ()=>{
-	return browserSync.init({
-		server: {
-			baseDir: path.dist,
-			routes: {
-				"/bower_components": "bower_components"
-			}
-		},
+'use strict'
+// globals
+const gulp = require('gulp')
+const browsersync = require('browser-sync')
+// locals
+const config = require('../gulp-config.js')
+// public tasks
+gulp.task('browsersync', () => {
+	let options = {
 		files: [
-			path.dist+'**/*',
-			path.package
+			`${config.serve}**/*.{html,php,js,${config.imageExtensions},${config.fontExtensions}}`
 		],
-		open: false,
-		port: path.port,
-		ui: {
-			port: path.port + 1
-		},
 		logPrefix: 'BrowserSync',
 		logConnections: true,
-		reloadOnRestart: true
-	});
-});
+	}
+	Object.assign(options, config.browserSync)
+	return browsersync.init(options)
+})

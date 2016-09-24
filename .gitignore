@@ -1,6 +1,1 @@
-node_modules/
-bower_components/
-public/
-.tmp
-app/templates/partials/_injections.jade
-app/styles/partials/_injections.sass
+/env.js

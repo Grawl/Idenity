@@ -1,16 +1,23 @@
-var gulp=require('gulp');
-var path=require('../path.json');
-gulp.task('templates', ()=>{
-	var hat=require('./_hat.js');
-	var jade=require('gulp-jade');
-	var locals=require('../'+path.src+'data.json');
-	locals.package=require('../package.json');
-	locals.path=path;
-	return gulp.src(path.src+path.srcTemplates)
+'use strict'
+// globals
+const gulp = require('gulp')
+const $ = require('gulp-load-plugins')()
+const fs = require('fs')
+// locals
+const config = require('../gulp-config.js')
+const hat = require('./_hat.js')
+const templatesConfig = require('./templates-config.js')
+// public tasks
+gulp.task('templates', () => {
+	let pugOptions = templatesConfig.pug.options
+	let dataFile = fs.readFileSync(`data.json`, {encoding: 'utf8'})
+	pugOptions.locals.data = JSON.parse(dataFile) // allow updating on watch
+	return gulp.src(config.templatesToCompile)
 		.pipe(hat())
-		.pipe(jade({
-			locals: locals,
-			basedir: '.'
+		.pipe($.pug(pugOptions))
+		.pipe($.posthtml(templatesConfig.postHTML.plugins))
+		.pipe($.rename({
+			extname: ''
 		}))
-		.pipe(gulp.dest(path.dist))
-});
+		.pipe(gulp.dest(config.serve))
+})

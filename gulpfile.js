@@ -1,33 +1,30 @@
+'use strict'
 // globals
-var gulp=require('gulp');
-var requireDir=require('require-dir');
-var runSequence=require('run-sequence').use(gulp);
+const gulp = require('gulp')
+const requireDir = require('require-dir')
+const runSequence = require('run-sequence').use(gulp)
 // locals
-requireDir('./tasks', {recurse: true});
+requireDir('./tasks', {recurse: true})
+require('gulp-stats')(gulp)
 // tasks
-gulp.task('default', ['live']);
+gulp.task('default', [':live'])
 // public tasks
-gulp.task('_live', (callback)=>{
-	return runSequence('assemble', 'watch', 'browsersync', callback);
-});
-gulp.task('_publish', (callback)=>{
-	runSequence('assemble', 'zip', callback)
-});
-// private tasks
-gulp.task('clean', ['clean:dist', 'clean:src', 'clean:tmp']);
-gulp.task('assemble', (callback)=>{
+gulp.task(':live', [':assemble', 'watch', 'browsersync'])
+gulp.task(':publish', done=> {
+	runSequence(':assemble', 'zip', done)
+})
+gulp.task(':upload', done=> {
+	runSequence(':publish', 'upload:ftp', done)
+})
+// public tasks (secondary)
+gulp.task(':assemble', done=> {
 	runSequence(
 		'clean',
-		'inject',
 		[
 			'templates',
 			'styles',
 			'scripts'
 		],
-		'bower:js',
-		'concat:js',
-		'copy',
-		'clean:tmp',
-		callback
-	);
-});
+		done
+	)
+})
